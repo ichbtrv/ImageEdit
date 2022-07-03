@@ -1,10 +1,10 @@
+import UploadButton from './UploadButton';
 
 const Home = () => {
   return (
-    <div
-
-    >
+    <div>
       Home
+      <UploadButton />
     </div>
   );
 };
