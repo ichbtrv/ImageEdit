@@ -1,0 +1,82 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Helvetica Neue', 'Helvetica',
+    sans-serif;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  @apply antialiased;
+}
+
+body {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+input {
+  transition: background 0.2s ease;
+  font-family: inherit;
+  font-size: 16px;
+  @apply px-4 shadow-lg py-2 w-72 sm:w-96 rounded-md outline-none font-semibold border border-transparent;
+}
+
+button {
+  background-color: transparent;
+  font-weight: 500;
+  line-height: 1;
+  text: 16px;
+  margin: 0 0.25rem;
+  transition: background-color 0.2s ease;
+  @apply px-4 py-3;
+}
+
+button:hover,
+button:focus {
+  cursor: pointer;
+}
+button:active {
+  transform: translateY(2px);
+}
+
+::placehold {
+  color: blue;
+}
+
+.highlight {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.appear {
+  opacity: 0;
+  animation: appear 1.5s cubic-bezier(0.1, 0, 0.175, 1) forwards;
+}
+
+@keyframes appear {
+  to {
+    opacity: 1;
+  }
+}
