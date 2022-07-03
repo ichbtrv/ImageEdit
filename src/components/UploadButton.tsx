@@ -1,7 +1,14 @@
-import { ChangeEvent, useRef } from "react";
+import { ChangeEvent, useRef } from 'react';
+import useStore from '~/hooks/useStore';
+
+const styles = {
+  buttonStyles: 'hover:bg-black hover:text-white rounded-md',
+};
 
 const UploadButton = () => {
   const inputFileRef = useRef<HTMLInputElement>(null);
+  const { imageStore } = useStore();
+
   const uploadImage = (event: ChangeEvent<HTMLInputElement>) => {
     const target = event.target as HTMLInputElement;
     const file: File = (target.files as FileList)[0];
@@ -13,23 +20,25 @@ const UploadButton = () => {
     const reader = new FileReader();
     reader.onloadend = async () => {
       const imageUrl = String(reader.result);
-      console.log(imageUrl);
+      await imageStore.load(imageUrl);
     };
     reader.readAsDataURL(file);
   };
 
   return (
     <>
-      <button onClick={() => inputFileRef.current?.click()}>Upload</button>
+      <button className={styles.buttonStyles} onClick={() => inputFileRef.current?.click()}>
+        Upload
+      </button>
       <input
         ref={inputFileRef}
-        type="file"
-        className="invisible"
+        type='file'
+        className='invisible'
         onChange={uploadImage}
-        accept="image/jpeg"
+        accept='image/jpeg'
       />
     </>
-  )
-}
+  );
+};
 
-export default UploadButton
+export default UploadButton;
